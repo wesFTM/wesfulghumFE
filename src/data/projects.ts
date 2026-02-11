@@ -232,6 +232,15 @@ const projects: Project[] = [
     mainVideo: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/papas_social.mp4',
     innovationLink: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/papasSocialExamples.mp4'
   },
+  {
+    slug: "kane-11-socks",
+    title: "Kane 11 Socks",
+    role: "Sr. Designer and Social Media Content Creator",
+    video:"https://pub-040eb69763f14186b11b39e2584847be.r2.dev/01.mp4",
+    mainDisc:"Working directly with the Creative Director, we crated social media for a new sock brand, Kane11.",
+    mainVideo: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/k11_social.mp4',
+    innovationLink: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/k11_social-bballgif.mp4'
+  },
 ];
 
 export default projects;
