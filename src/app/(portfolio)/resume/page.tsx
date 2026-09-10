@@ -21,8 +21,8 @@ export default function ResumePage() {
           Frontend engineer who ships production React, TypeScript, and Next.js. Five years building
           campaign platforms, analytics dashboards, and interactive video UIs at First Tube / Horizon
           Media — including REST integrations, 1PD microsites, and in-stream engagement. Works in
-          Git/PR review with lead engineers, PMs, and design. April–August 2025: React SPA in
-          TypeScript for a live-music product (NDA).
+          Git/PR review with lead engineers, PMs, and design. April–August 2025: Vite multi-page
+          web app in Capacitor (iOS TestFlight) for a live-music product (NDA).
         </p>
         <p className="mt-2">
           New York, NY |{' '}
@@ -53,27 +53,29 @@ export default function ResumePage() {
           <p className="italic">Confidential live-music product (NDA)</p>
           <ul className="mt-1 list-disc space-y-0.5 pl-5">
             <li>
-              Shipped a React SPA in TypeScript and Tailwind: reusable components, typed props, and
-              public vs authenticated route splits.
+              Shipped a dynamically built Vite multi-page web app in TypeScript and Tailwind, wrapped
+              in Capacitor for native iOS features and early-stage TestFlight / App Store Connect
+              testing.
             </li>
             <li>
               Auth-gated routing (sessions fail closed; tokens off the URL). Consumed authenticated
-              REST/JSON with async/await for session and resource data.
+              REST/JSON from a Cloudflare Worker on D1 for session and resource data.
             </li>
             <li>
               Multi-step forms with client validation, inline errors, and async submit states. Context
-              API for session and preferences; local state for forms and the player.
+              API for session and preferences; Durable Objects for real-time state; local state for
+              forms and the player.
             </li>
             <li>
-              Media playback UI with loading, buffering, and error handling. Git branches, pull
-              requests, and CI on each meaningful change.
+              Media over Cloudflare Stream (HLS) with assets on R2. Capacitor plus the Worker let web
+              updates ship without a new TestFlight build. Git branches, PRs, and CI on each change.
             </li>
           </ul>
         </section>
 
         <section className="mt-3">
           <div className="flex flex-wrap justify-between gap-x-4">
-            <h3 className="font-semibold">Frontend Engineer</h3>
+            <h3 className="font-semibold">Frontend Engineer & Lead Designer</h3>
             <p>May 2020 – May 2025</p>
           </div>
           <p className="italic">First Tube — Horizon Media | New York</p>
@@ -142,9 +144,10 @@ export default function ResumePage() {
         <h2 className="mt-4 border-b border-black pb-0.5 text-base font-semibold">Skills</h2>
         <p className="mt-2">
           <span className="font-semibold">Frontend:</span> React, Next.js, TypeScript, JavaScript
-          (ES6+), HTML5, CSS3, Tailwind, Context API.{' '}
+            (ES6+), HTML5, CSS3, Tailwind, Vite, Context API.{' '}
           <span className="font-semibold">Integration & delivery:</span> REST APIs, JSON data models,
-          Git (branches, PRs, reviews), AWS, Vercel, Agile.{' '}
+          Git (branches, PRs, reviews), AWS, Vercel, Cloudflare (Workers, R2, Stream, D1, Durable
+          Objects), Vite, Capacitor, iOS TestFlight, Agile.{' '}
           <span className="font-semibold">Media & campaigns:</span> VAST, livestream overlays, 1PD /
           sweepstakes forms, Canvas, Figma.
         </p>

@@ -13,7 +13,7 @@ export default function MomentumDemoPage() {
       title="Live music application"
       backHref="/projects/momentum"
       theme="light"
-      note="Architecture only: auth, Context, forms, media shell. No product name, branding, or production APIs."
+      note="Architecture only: Vite multi-page app, Capacitor/iOS shell, auth, forms, media. No product name, branding, or production APIs."
     >
       <MomentumApp />
     </DemoShell>

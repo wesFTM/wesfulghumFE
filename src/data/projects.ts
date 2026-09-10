@@ -80,7 +80,7 @@ const projects: Project[] = [
     outcome:
       'Ops and account teams could monitor live-campaign KPIs in one UI instead of stitching platform exports. The same dashboard shell was reused across campaigns with brand-level config rather than a new front end each time.',
     demoUrl: '/demos/ftlive',
-    demoLabel: 'Launch mock dashboard',
+    demoLabel: 'Launch dashboard',
     poster: `${r2}/ftLive01.png`,
     posterAlt: 'FT Live analytics dashboard UI',
     video: `${r2}/ft_live.mp4`,
@@ -95,21 +95,26 @@ const projects: Project[] = [
     nda: true,
     dates: 'April 2025 – August 2025',
     summary:
-      'A React SPA in the live-music space (April–August 2025). Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
+      'A Vite multi-page web app in the live-music space (April–August 2025), wrapped in Capacitor for native iOS and early-stage TestFlight. Cloudflare Worker + D1, R2, Stream HLS, and Durable Objects. Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
     problem:
-      'The product needed a production-grade frontend: authenticated sessions, multi-step forms, durable client state, and media playback — without leaking implementation details that would identify the app.',
+      'The product needed a production-grade Vite multi-page frontend that could ship as an iOS app (TestFlight / App Store Connect) while still updating from the edge: authenticated sessions, multi-step forms, real-time state, and HLS playback — without leaking implementation details that would identify the app.',
     ownership:
-      'April–August 2025 I built and maintained the frontend: typed views, auth-aware routing, form flows, REST/JSON integration, and media surfaces. CI ran on every meaningful change.',
+      'April–August 2025 I built and maintained the Vite multi-page web app and its Capacitor iOS shell: typed views, auth-aware routing, form flows, REST/JSON against a Worker on D1, media on Stream and R2, Durable Objects for real-time surfaces, and Worker-delivered web updates so TestFlight did not need a new native build for each change. CI ran on every meaningful change.',
     architecture: [
+      {
+        title: 'Native shell',
+        detail:
+          'Capacitor wraps the Vite multi-page web app so it can use native iOS features and ship via TestFlight / App Store Connect (early-stage testing). Web changes go out through a Cloudflare Worker without resubmitting a native build.',
+      },
       {
         title: 'Auth boundary',
         detail:
-          'Session-aware routes separate public and signed-in surfaces. Tokens stay off the URL; expired sessions fail closed and return the user to sign-in.',
+          'Session-aware routes separate public and signed-in surfaces. Tokens stay off the URL; expired sessions fail closed. Session and resource APIs run on a Cloudflare Worker backed by D1.',
       },
       {
         title: 'State',
         detail:
-          'Server-fetched resources live beside local UI state. Context holds session and cross-route preferences; feature screens keep form and player state close to the components that own them.',
+          'Server-fetched resources live beside local UI state. Context holds session and cross-route preferences; Durable Objects coordinate real-time state; feature screens keep form and player state close to the components that own them.',
       },
       {
         title: 'Forms',
@@ -119,23 +124,35 @@ const projects: Project[] = [
       {
         title: 'Media',
         detail:
-          'Playback UI with explicit loading, buffering, and error handling — the same class of browser constraints as campaign players, applied to a product context.',
+          'Playback UI over Cloudflare Stream (HLS) with explicit loading, buffering, and error handling. Assets live on R2 object storage — the same class of browser constraints as campaign players, applied to a product context.',
       },
     ],
     stack: [
       'React',
       'TypeScript',
+      'Vite',
       'Tailwind CSS',
+      'Capacitor',
+      'iOS / TestFlight',
       'Context API',
+      'Cloudflare Workers',
+      'D1',
+      'R2',
+      'Stream (HLS)',
+      'Durable Objects',
       'Auth',
       'Media playback',
       'CI/CD',
     ],
-    apis: ['Authenticated REST for session and resources', 'Media source URLs'],
+    apis: [
+      'Authenticated REST for session and resources (Worker + D1)',
+      'Cloudflare Stream (HLS)',
+      'R2 object storage',
+    ],
     engineering:
-      'This is the most contemporary React/TypeScript work I can show (April–August 2025). The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
+      'This is the most contemporary TypeScript work I can show (April–August 2025): a Vite multi-page web app in a Capacitor iOS wrapper, plus a Cloudflare Worker on D1, R2, Stream HLS, and Durable Objects. Web updates shipped through the Worker so TestFlight did not need a new native build for each change. The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
     outcome:
-      'A maintainable SPA structure that a hiring manager can evaluate: typed components, auth gating, forms, state boundaries, and media — without violating the NDA.',
+      'A maintainable Vite multi-page + Capacitor structure that a hiring manager can evaluate: TestFlight delivery, Worker-driven updates, typed components, auth gating, forms, real-time state, media delivery, and an edge data layer — without violating the NDA.',
     demoUrl: '/demos/momentum',
     demoLabel: 'Launch pattern demo',
   },

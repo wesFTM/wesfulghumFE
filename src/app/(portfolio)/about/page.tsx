@@ -23,6 +23,12 @@ const skills = [
   'Context API',
   'Git / PRs / code review',
   'AWS',
+  'Cloudflare Workers',
+  'R2 / Stream / D1',
+  'Durable Objects',
+  'Vite',
+  'Capacitor',
+  'iOS / TestFlight',
   'Debugging (browser, network, performance)',
   'Agile',
   'Figma',
@@ -52,8 +58,9 @@ export default function AboutPage() {
           </p>
           <p>
             I do not claim ten years of React. I claim ten-plus years shipping digital work, five-plus
-            years of production frontend at Horizon (HTML/CSS/JS through Next.js), and a React SPA in
-            TypeScript (April–August 2025, NDA). The case studies are the proof.
+            years of production frontend at Horizon (HTML/CSS/JS through Next.js), and a Vite
+            multi-page web app in Capacitor (April–August 2025, NDA; iOS TestFlight). The case studies
+            are the proof.
           </p>
         </div>
 
@@ -68,14 +75,16 @@ export default function AboutPage() {
                 Confidential live-music product (NDA) · April 2025 – August 2025
               </p>
               <p className="mt-2 leading-relaxed text-fg-muted">
-                Shipped a React SPA in TypeScript and Tailwind: auth-gated routes, multi-step forms
-                with client validation, Context for session state, REST/JSON for authenticated
-                resources, and a media playback UI with loading, buffering, and error handling. Git
-                branches, pull requests, and CI on each meaningful change.
+                Shipped a dynamically built Vite multi-page web app in TypeScript and Tailwind, wrapped in
+                Capacitor for native iOS and early-stage TestFlight / App Store Connect testing.
+                Auth-gated routes, multi-step forms, Context for session state, and REST/JSON from a
+                Cloudflare Worker on D1. Media over Stream (HLS) with assets on R2; Durable Objects
+                for real-time state. Web updates went through the Worker so TestFlight did not need a
+                new native build for each change. Git branches, pull requests, and CI.
               </p>
             </li>
             <li>
-              <h3 className="text-xl font-semibold">Frontend Engineer & Design Director</h3>
+              <h3 className="text-xl font-semibold">Frontend Engineer & Lead Designer</h3>
               <p className="text-sm text-fg-muted">First Tube | Horizon Media · May 2020 – May 2025</p>
               <p className="mt-2 leading-relaxed text-fg-muted">
                 Designed and developed campaign platforms, livestream portals, 1PD forms, and
