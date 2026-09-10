@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wes Fulghum — Frontend Portfolio
 
-## Getting Started
+Preview repo for the senior frontend engineer site. The live domain still points at [`wesFTM/newPortfolio`](https://github.com/wesFTM/newPortfolio) until this is promoted.
 
-First, run the development server:
+This is a **Next.js 15 App Router** app in **TypeScript** and **Tailwind CSS**. It is both the portfolio and a work sample — server components by default, a small UI kit, typed content, and live demos that fetch a fixture REST endpoint.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- Next.js 15 (App Router, Server Components)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Vercel
+
+## Architecture
+
+```
+src/
+  app/
+    (portfolio)/     Site chrome: home, about, archive, resume, case studies
+    demos/           Restored / sanitized interactive demos
+    api/kpis/        Fixture REST JSON for the analytics dashboard
+  components/
+    ui/              Button, Tag, Container
+    demos/           Demo-only clients (forms, canvas photobooth, overlays)
+  data/              Typed project model, site constants, KPI fixture
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Case studies live in [`src/data/projects.ts`](src/data/projects.ts). Featured work is engineering; design/motion is under `/archive`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | What it shows |
+| --- | --- |
+| `/demos/the-general` | VAST player shell + validated 1PD form (no list writes) |
+| `/demos/bacardi` | Overlays, merch modal, canvas photobooth, sweeps form |
+| `/demos/ftlive` | Dashboard UI consuming `GET /api/kpis` |
+| `/demos/michelob` | Content platform shell + dismissible overlay |
+| `/demos/momentum` | NDA-safe patterns: Context auth, forms, media state |
 
-## Learn More
+## Local
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm run lint
+```
 
-## Deploy on Vercel
+## GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- This preview repo: [github.com/wesFTM/wesfulghumFE](https://github.com/wesFTM/wesfulghumFE)
+- Live site repo (unchanged): [github.com/wesFTM/newPortfolio](https://github.com/wesFTM/newPortfolio)
+- Profile: [github.com/wesFTM](https://github.com/wesFTM)

@@ -1,246 +1,507 @@
-// src/data/projects.ts
+export type ProjectCategory = 'engineering' | 'design';
 
-export interface Project {
+export type ArchitectureStep = {
+  title: string;
+  detail: string;
+};
+
+export type Project = {
   slug: string;
   title: string;
   role: string;
-  mainDisc: string;
-
- // Optional common fields
-  description?: string;
-  innovation?: string;
+  category: ProjectCategory;
+  featured: boolean;
+  order: number;
+  summary: string;
+  problem: string;
+  ownership: string;
+  architecture: ArchitectureStep[];
+  stack: string[];
+  apis?: string[];
+  engineering: string;
+  outcome: string;
+  demoUrl?: string;
+  demoLabel?: string;
+  poster?: string;
+  posterAlt?: string;
   video?: string;
-  mainVideo?: string;
-  tech?: string;
-  innovationLink?: string;
-  websiteDesc?: string;
-  websiteImage?: string;
+  nda?: boolean;
   client?: string;
-  team?: string;
-}
+};
+
+const r2 = 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev';
 
 const projects: Project[] = [
   {
+    slug: 'ftlive',
+    title: 'FT Live Analytics Platform',
+    role: 'Frontend Engineer & Design',
+    category: 'engineering',
+    featured: true,
+    order: 1,
+    client: 'First Tube / Horizon Media',
+    summary:
+      'A campaign analytics web app that surfaced near-real-time KPIs across social and programmatic platforms, so brand and ops teams could see performance without waiting on a weekly deck.',
+    problem:
+      'Live and programmatic campaigns were generating data across YouTube, TikTok, Meta, X, and DV360. Stakeholders needed one frontend that could ingest aggregator payloads, normalize a messy JSON model, and render campaign-specific dashboards without a full backend rewrite for every brand.',
+    ownership:
+      'I designed and built the frontend with the lead developer: information architecture, dashboard UI, chart and table views, and the client-side mapping from aggregator responses into widgets. GitHub was the source of truth for iteration and release.',
+    architecture: [
+      {
+        title: 'Aggregator APIs',
+        detail:
+          'Authenticated REST calls to a social/media aggregator returned per-platform metrics as nested JSON (impressions, completions, engagement, spend).',
+      },
+      {
+        title: 'Normalize & map',
+        detail:
+          'Frontend transforms flattened platform records into a shared campaign model so widgets stay reusable across brands instead of one-off templates.',
+      },
+      {
+        title: 'Dashboard UI',
+        detail:
+          'Next.js views compose KPI tiles, platform breakdowns, and time-sensitive totals. Loading and stale states are explicit because the data is near-real-time, not batch.',
+      },
+      {
+        title: 'Ship',
+        detail:
+          'GitHub workflows for review and release; the app was hosted on AWS-backed infrastructure used by the campaign ops team.',
+      },
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'REST APIs', 'JSON', 'GitHub', 'AWS'],
+    apis: [
+      'Social aggregator REST (YouTube, TikTok, Meta, X)',
+      'Programmatic metrics (DV360)',
+      'Internal campaign config JSON',
+    ],
+    engineering:
+      'The hard part was not drawing charts — it was making a volatile, nested JSON contract readable. I typed the payload shapes we could rely on, guarded the fields we could not, and kept async fetching out of presentational components so a failed platform did not blank the whole board. Browser performance mattered when several campaigns refreshed in one session.',
+    outcome:
+      'Ops and account teams could monitor live-campaign KPIs in one UI instead of stitching platform exports. The same dashboard shell was reused across campaigns with brand-level config rather than a new front end each time.',
+    demoUrl: '/demos/ftlive',
+    demoLabel: 'Launch mock dashboard',
+    poster: `${r2}/ftLive01.png`,
+    posterAlt: 'FT Live analytics dashboard UI',
+    video: `${r2}/ft_live.mp4`,
+  },
+  {
+    slug: 'momentum',
+    title: 'Live Music Application',
+    role: 'Frontend Engineer',
+    category: 'engineering',
+    featured: true,
+    order: 2,
+    nda: true,
+    summary:
+      'A React SPA in the live-music space. Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
+    problem:
+      'The product needed a production-grade frontend: authenticated sessions, multi-step forms, durable client state, and media playback — without leaking implementation details that would identify the app.',
+    ownership:
+      'I am building and maintaining the frontend: typed views, auth-aware routing, form flows, and media surfaces. CI runs on every meaningful change.',
+    architecture: [
+      {
+        title: 'Auth boundary',
+        detail:
+          'Session-aware routes separate public and signed-in surfaces. Tokens stay off the URL; expired sessions fail closed and return the user to sign-in.',
+      },
+      {
+        title: 'State',
+        detail:
+          'Server-fetched resources live beside local UI state. Context holds session and cross-route preferences; feature screens keep form and player state close to the components that own them.',
+      },
+      {
+        title: 'Forms',
+        detail:
+          'Multi-field flows with client validation, inline errors, and async submit states. Invalid payloads never look like a successful save.',
+      },
+      {
+        title: 'Media',
+        detail:
+          'Playback UI with explicit loading, buffering, and error handling — the same class of browser constraints as campaign players, applied to a product context.',
+      },
+    ],
+    stack: [
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Context API',
+      'Auth',
+      'Media playback',
+      'CI/CD',
+    ],
+    apis: ['Authenticated REST for session and resources', 'Media source URLs'],
+    engineering:
+      'This is the most contemporary React/TypeScript work I can show. The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
+    outcome:
+      'A maintainable SPA structure that a hiring manager can evaluate: typed components, auth gating, forms, state boundaries, and media — without violating the NDA.',
+    demoUrl: '/demos/momentum',
+    demoLabel: 'Launch pattern demo',
+  },
+  {
+    slug: 'michelob',
+    title: 'Michelob Ultra Movement',
+    role: 'Frontend Engineer & Design',
+    category: 'engineering',
+    featured: true,
+    order: 3,
+    client: 'Michelob Ultra',
+    summary:
+      'An always-on content platform for exclusive workouts, merch, and live events — with in-stream overlays, discount codes, and giveaways wired into the watching experience.',
+    problem:
+      'The brand needed a hub that felt like a product, not a campaign landing page: browse sessions, watch, redeem offers, and come back. The frontend had to compose marketing modules and a player without collapsing into a one-off microsite.',
+    ownership:
+      'Working with the lead developer, I led frontend implementation and interface design in Figma and Next.js — layout system, content modules, and the overlay/giveaway interactions.',
+    architecture: [
+      {
+        title: 'App shell',
+        detail:
+          'Next.js routes for home, sessions, events, and merch share a typed layout and navigation so new drops do not require a new site.',
+      },
+      {
+        title: 'Content modules',
+        detail:
+          'Workout cards, event blocks, and merch tiles are reusable. CMS-like JSON drives what renders; the UI does not hard-code a single season.',
+      },
+      {
+        title: 'In-stream layer',
+        detail:
+          'Clickable overlays, discount codes, and giveaway prompts sit above the player as a separate interaction layer so playback and CTAs do not fight each other.',
+      },
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Figma', 'HTML/CSS'],
+    apis: ['Content/session JSON', 'Promo and giveaway config'],
+    engineering:
+      'The platform is a composition problem: keep the player stable while overlays, codes, and merch CTAs change per event. I treated overlays as UI, not burned-in video, so they could be timed, dismissed, and reused.',
+    outcome:
+      'A branded hub for workouts and live events that could take new sessions without rebuilding the front end. The public demo is a sanitized UI with mock content.',
+    demoUrl: '/demos/michelob',
+    demoLabel: 'Launch platform demo',
+    poster: `${r2}/MU_WebImage.png`,
+    posterAlt: 'Michelob Ultra Movement platform screenshot',
+    video: `${r2}/MICHELOB_BRANDED_CONTENT__Inno.mp4`,
+  },
+  {
+    slug: 'bacardi',
+    title: 'Casa Bacardi Live',
+    role: 'Frontend Engineer & Design',
+    category: 'engineering',
+    featured: true,
+    order: 4,
+    client: 'Bacardi',
+    summary:
+      'Festival sweepstakes microsite plus interactive stream technology: clickable overlays, exclusive merch, a digital photobooth, and promo codes.',
+    problem:
+      'The live show needed a web layer that collected first-party entries and let remote viewers do something with the stream — shop, grab a code, or take a branded photo — without sending them into a dead-end landing page.',
+    ownership:
+      'I designed and built the microsite and the interactive stream surfaces in HTML, CSS, and JavaScript, including the photobooth experience and merch/overlay behaviors used during the broadcast.',
+    architecture: [
+      {
+        title: 'Microsite',
+        detail:
+          'Responsive campaign site for event story, eligibility, and 1PD sweepstakes capture. Forms validate in the browser before they ever hit the list provider.',
+      },
+      {
+        title: 'Overlay runtime',
+        detail:
+          'Timed, clickable lower-thirds over the player. Hits map to merch, codes, or photobooth rather than a single generic URL.',
+      },
+      {
+        title: 'Photobooth',
+        detail:
+          'Canvas-based capture with a brand frame so shares stay on-campaign. The restored demo uses a local canvas pipeline — no uploads, no PII.',
+      },
+    ],
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Canvas', 'RTMP / player overlay'],
+    apis: ['Sweepstakes / list capture', 'Merch deep links', 'Promo-code config'],
+    engineering:
+      'Overlays have to survive player chrome, mobile viewports, and accidental clicks. The photobooth is a frontend feature: getUserMedia or file input, draw to canvas, composite a frame, export a PNG. The restored demo is a sanitized reconstruction of those surfaces from the original HTML — no live list writes.',
+    outcome:
+      'Remote viewers could enter, shop, redeem, and generate shareable photos from the same event property. Launch the restored microsite below.',
+    demoUrl: '/demos/bacardi',
+    demoLabel: 'Launch restored microsite',
+    poster: `${r2}/Bacardi_web.png`,
+    posterAlt: 'Casa Bacardi campaign website',
+    video: `${r2}/bacardi_1.mp4`,
+  },
+  {
     slug: 'the-general',
     title: 'The General Sound Studio Live',
-    role: 'Lead Designer, Motion Graphics, Video Editing, Frontend',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/theGeneral.mp4',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/TheGeneral_SoundStudio_Promo_16%20x%209_720.mp4',
-    description:
-      'Working directly with the creative director, I led design initatives across The General Sound Studio campaign that went live from a car show in Atlanta. I storyboarded and edited the promo video as well as designed all on-screen graphics and static promo material. I also designed and built a landing page that was used to collect 1PD entries for sweepsstakes.',
-    tech: 'After Effects, Premier, HTML, CSS, JavaScript, Mailchimp',
-    innovation:
-      'Developed ad technology that turned a live feed into a VAST compliant ad unit in near real time and distributed across thousands of consumer sites',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/TGSS_16x9.mp4',
-    websiteDesc:
-      'A landing page was built to facalitate 1PD collection as entries to a sweepstakes. The landing page was built using HTML, CSS, and Javascript with Mainchimp acting as the database.',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/TheGeneralWeb.png',
-    mainDisc:
-      'This is the main promo used across all parties in the campaign. From concept through production, I storyboarded, created motion graphics, edited, and versioned this piece of content.',
+    role: 'Frontend Engineer & Design',
+    category: 'engineering',
+    featured: true,
+    order: 5,
+    client: 'The General',
+    summary:
+      'Ad tech that wrapped a live studio feed in a VAST-compliant unit for programmatic distribution, plus a 1PD sweepstakes landing page.',
+    problem:
+      'A live car-show studio feed had to run as an in-stream ad across consumer sites. That is a frontend and standards problem: VAST lifecycle, player behavior, and a sweepstakes page that could collect entries without a full app stack.',
+    ownership:
+      'I designed and built the landing page (HTML, CSS, JavaScript, Mailchimp as the list store) and worked the live-to-VAST distribution path so the same feed could traffic as a programmatic unit.',
+    architecture: [
+      {
+        title: 'Live source',
+        detail: 'Studio feed encoded for web playback and for the ad wrapper, not only for a branded site player.',
+      },
+      {
+        title: 'VAST wrapper',
+        detail:
+          'The live stream is presented inside a VAST-compliant unit so demand-side platforms can request, track, and complete it like any other in-stream creative.',
+      },
+      {
+        title: '1PD landing page',
+        detail:
+          'A campaign site collects sweepstakes entries. Client-side validation, then Mailchimp as the datastore — no custom backend required for this surface.',
+      },
+    ],
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'VAST', 'Mailchimp'],
+    apis: ['Mailchimp list API', 'VAST tracking beacons'],
+    engineering:
+      'VAST is unforgiving: impression beacons, quartiles, and completion events have to fire even when the creative is a live stream instead of a 30-second file. On the site, the form is a standard async POST with validation and a done state. The restored demo never writes to Mailchimp.',
+    outcome:
+      'The live unit could run programmatically across consumer inventory, with a companion page for entries. This is the kind of browser/network work the listing calls engineering excellence — just in an ad-tech costume.',
+    demoUrl: '/demos/the-general',
+    demoLabel: 'Launch restored landing page',
+    poster: `${r2}/TheGeneralWeb.png`,
+    posterAlt: 'The General Sound Studio landing page',
+    video: `${r2}/theGeneral.mp4`,
   },
   {
     slug: 'southwest',
     title: 'Southwest Airlines Hawaii Heartbeats',
-    role: 'Lead Designer, Motion Graphics, Onsite Graphics, Sweepstakes Frontend',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/southwest.mp4',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Hawaii%20Heart%20Beats%20Concert%20with%20_%20Southwest%20Airlines_1.mp4',
-    description:
-      'Working directly with the creative director, I developed the graphic package used for the Southwest Airlines Hawaii Heartbeats Maui Benefit concert. The package included logo creation, on site prind graphics, and digital promo assets along with a sweepstakes element. The concert was held at the MACC in Maui.',
-    tech: 'Illustrator, After Effects, Premier, HTML, CSS, Javascript',
-    innovationLink:"https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Southwest_images.mp4",
-    mainDisc:
-      'Through Hawaii Heart Beats, Southwest Airlines encouraged Hawaii residents to sign up for a Rapid Rewards account and enter a sweepstakes to win concert tickets, airfare, and a hotel stay. The program culminated with a concert hosted at the Maui Arts and Cultural Center (MACC), that brought Multi-Platinum country artist, Russell Dickerson, and Hawaii local, Lily Meola, to Maui for a weekend full of music, love, and uplifting community support.',
+    role: 'Frontend Engineer & Design',
+    category: 'engineering',
+    featured: true,
+    order: 6,
+    client: 'Southwest Airlines',
+    summary:
+      'A Hawaii-only microsite for Rapid Rewards signup and a sweepstakes tied to a Maui benefit concert — tickets, airfare, and hotel.',
+    problem:
+      'Entry had to be limited to Hawaii residents, collect first-party data, and still feel like the concert campaign rather than a generic form. Geo eligibility was a product rule, not a footnote.',
+    ownership:
+      'I designed the campaign graphic system and built the sweepstakes frontend in HTML, CSS, and JavaScript — layout, form flow, and the eligibility story on the page.',
+    architecture: [
+      {
+        title: 'Geo-aware entry',
+        detail:
+          'Hawaii-only positioning and form fields made eligibility visible before submit. The frontend carried the campaign rule instead of hiding it in legal copy.',
+      },
+      {
+        title: '1PD form',
+        detail:
+          'Rapid Rewards plus sweepstakes fields, validated in-browser, wired to the campaign list. Clear success and error states.',
+      },
+      {
+        title: 'Campaign UI',
+        detail:
+          'Responsive page that held concert story, talent, and the prize without drowning the form — the actual conversion surface.',
+      },
+    ],
+    stack: ['HTML5', 'CSS3', 'JavaScript'],
+    apis: ['Sweepstakes / list capture'],
+    engineering:
+      'Sweepstakes frontends fail on the boring details: required fields, mobile keyboards, and users who bounce when eligibility is a surprise. I kept the geo constraint in the UI and the form short enough to finish on a phone.',
+    outcome:
+      'Hawaii residents could create or use Rapid Rewards and enter for concert tickets, airfare, and a hotel stay. The concert at the Maui Arts & Cultural Center was the capstone; the site was the conversion layer. Original HTML is not public — walkthrough and stills only.',
+    poster: `${r2}/southwest.mp4`,
+    posterAlt: 'Southwest Hawaii Heartbeats campaign',
+    video: `${r2}/southwest.mp4`,
   },
   {
     slug: 'abi',
-    title: 'Anheuser Busch Reventon de Verano',
-    role: 'Lead Designer, Motion Graphics, Interactive Video, Frontend',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/reventon.mp4',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Reventon_Sizzle_web_720.mp4',
-    description:
-      'Working directly with the creative director, I led graphic and interactive design initatives across Anheuser Busch Reventon digital summer music festival. I designed interactive lower thirds that were displayed during the live performance. Interactivity methods included, click to shop (in stream shopping), Promo Codes, Digital Photo Booth, and Unique sharable moments generated from live content.',
-    tech: 'After Effects, Premier, RTMP, HTML, CSS, Javascript',
-    innovation:
-      'Used clickable overlays as interactive design method. Users could click the grphic on screen to invoke different engagements.',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Reventon_Interactive_1_720.mp4',
-    websiteDesc: 'Streaming technology was developed to allow for user interactivity with the player.',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/reventonWeb.png',
-    mainDisc:
-      'This is the main sizzle recap video. I led the design and interavtive development efforts across the campaign.',
+    title: 'Anheuser-Busch Reventón de Verano',
+    role: 'Frontend Engineer & Design',
+    category: 'engineering',
+    featured: true,
+    order: 7,
+    client: 'Anheuser-Busch',
+    summary:
+      'Interactive livestream tactics for a digital summer music festival: clickable overlays, realtime shareable moments, promo codes, and in-stream shopping.',
+    problem:
+      'A streamed festival is passive unless the player has a web interaction layer. Viewers needed a way to click what they saw — shop, copy a code, or grab a moment — while the show stayed live.',
+    ownership:
+      'I led graphic and interactive development: overlay design and the frontend behaviors that turned those graphics into hit-targets during the broadcast.',
+    architecture: [
+      {
+        title: 'Player + overlay',
+        detail:
+          'HTML overlay stack sits on the livestream. Coordinates and timing are a frontend concern so clicks resolve to the current offer, not last night’s.',
+      },
+      {
+        title: 'Engagement actions',
+        detail:
+          'Each overlay type had a job: merch, promo code, or a generated shareable from live content. One interaction model, several payloads.',
+      },
+      {
+        title: 'Shareable output',
+        detail:
+          'Moments generated from the live show needed a predictable web result (image/text) so social share was a feature, not a screenshot workaround.',
+      },
+    ],
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'RTMP / player overlay'],
+    apis: ['Merch / shop links', 'Promo-code config', 'Shareable generation'],
+    engineering:
+      'Hit-testing on a live player is a browser problem: scaling, letterboxing, and mobile tap targets. I built overlays as DOM, not baked video, so offers could change mid-show. No public demo — the original runtime was event-bound.',
+    outcome:
+      'The stream was a shoppable, shareable surface instead of a one-way broadcast. Supporting video shows the overlay language in context.',
+    poster: `${r2}/reventonWeb.png`,
+    posterAlt: 'Reventón de Verano interactive stream UI',
+    video: `${r2}/reventon.mp4`,
   },
-
-  {
-    slug: 'bacardi',
-    title: 'Casa Bacardi',
-    role: 'Lead Designer, Motion Graphics, Frontend',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/bacardi_1.mp4',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/bacardi_external_brand_sizzle%20web.mp4',
-    description:
-      'Working directly with the creative director, I led graphic and interactive design initatives across the Casa Bacardi Music festival camaign. Livestream graphics, promo creation, landing page build.',
-    tech: 'After Effects, Premier, RTMP, HTML, CSS, Javascript',
-    innovation:
-      'Built in-stream interactivity with a customizable digital photobooth.',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Bacardi_Photobooth.mov',
-    websiteDesc: 'Landing page was built to collect 1PD and promote the event.',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Bacardi_web.png',
-    mainDisc:
-      'This is the main sizzle recap video. I led the design and interavtive development efforts across the campaign including motion and interactive.',
-  },
-
   {
     slug: 'greygoose',
-    title: 'Grey Goose Essences - In Bloom ',
-    role: 'Lead Designer, Motion Graphics, AR',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/greygoose.mp4',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/GG_SZA_15sec_16x9.mp4',
-    description:
-      'Working directly with the creative director, I led motion graphics, promo creation, versioning, and static ads for Grey Goose Essences In Bloom 2 years in a row.',
-    tech: 'After Effects, Premier, 8th Wall three.js',
-    innovation:
-      'Built AR enabled engagements utlizing image recognition and QR codes. This is a concept for loyalty engagement on product.',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/GG_AR.mp4',
-    websiteDesc: 'Landing page was built to collect 1PD and promote the event.',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/GG_web.jpeg',
-    mainDisc:
-      'This is the main promo asset used for year one of the campaign. I led the design and interavtive development efforts across the campaign including motion and interactive AR.',
+    title: 'Grey Goose Essences — In Bloom',
+    role: 'Interactive & motion',
+    category: 'design',
+    featured: false,
+    order: 20,
+    client: 'Grey Goose',
+    summary:
+      'Campaign motion, promo, and a WebAR concept using image recognition and QR — 8th Wall and three.js — as a loyalty engagement on-pack.',
+    problem:
+      'Extend a brand campaign past static ads into a phone-based AR moment tied to product.',
+    ownership:
+      'Motion, versioning, static ads, and the AR engagement concept.',
+    architecture: [
+      {
+        title: 'WebAR',
+        detail: '8th Wall + three.js, triggered via QR / image target. Listed here as interactive frontend, not as a full product case study.',
+      },
+    ],
+    stack: ['8th Wall', 'three.js', 'After Effects'],
+    engineering:
+      'WebAR sits on the engineering side of this archive: browser-based 3D, camera permissions, and image targets. The rest of the engagement was campaign motion.',
+    outcome: 'Two years of In Bloom campaign assets, plus an on-pack AR concept.',
+    poster: `${r2}/GG_web.jpeg`,
+    posterAlt: 'Grey Goose In Bloom campaign',
+    video: `${r2}/greygoose.mp4`,
   },
-
   {
     slug: 'grubhub',
     title: 'Grubhub Soundbites',
-    role: 'Lead Designer, Motion Graphics, Video Editing, Frontend',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/grubhub.mp4',
-    tech: 'After Effects, Premier, Wordpress',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/grubhub_case_study_web.mp4',
-    description:
-      'Working directly with the creative director, I led motion graphics, promo creation, versioning, and landing pages for Grubhub Soundbites. ',
-    mainDisc:
-      'This was a custom built music program built by FirstTube exclusively for Grubhub.',
-    innovation: 'Built in-stream qr codes for loyalty engagament',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/GH_innovation.mp4',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/GH_web.gif',
-    websiteDesc: 'Landing page was built to collect 1PD and promote the multiple shows.',
+    role: 'Design & frontend',
+    category: 'design',
+    featured: false,
+    order: 21,
+    client: 'Grubhub',
+    summary:
+      'Branded music program with landing pages and in-stream QR for loyalty — WordPress plus campaign motion.',
+    problem: 'Give a multi-show music series a web home and a scan-to-engage loop during streams.',
+    ownership: 'Landing pages, motion, and QR loyalty engagements.',
+    architecture: [],
+    stack: ['WordPress', 'HTML', 'CSS'],
+    engineering: 'Campaign landing pages and QR flows rather than a long-lived app.',
+    outcome: 'A series hub for shows and a scan path back to loyalty.',
+    poster: `${r2}/GH_web.gif`,
+    posterAlt: 'Grubhub Soundbites web',
+    video: `${r2}/grubhub.mp4`,
   },
-
-  {
-    slug: 'michelob',
-    title: 'Michelob Ultra Movement Live Platform',
-    role: 'Lead Designer, Frontend',
-    video: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/MICHELOB_BRANDED_CONTENT__Inno.mp4',
-    tech: 'Figma, NextJS',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/MICHELOB_BRANDED_CONTENT__1280.mp4',
-    description:
-      'Working directly with the lead developer, I led frontend development and design for the platform.',
-    mainDisc:
-      'This was a custom built - always on fitness platform for Michelob Ultra',
-    innovation:
-      'Built platform to act as the hub for Michelob Ultra workouts and foster engagement',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/MICHELOB_BRANDED_CONTENT__Inno.mp4',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/MU_WebImage.png',
-    websiteDesc:
-      'Landing page was built to collect 1PD as well as promote and foster participation.',
-  },
-
-  {
-    slug: 'ftlive',
-    title: 'FT Live - Ad Analytics Platform',
-    role: 'Lead Designer, Frontend',
-    video:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/ft_live.mp4',
-    tech: 'Figma, NextJS, gitHub, AWS',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/LIVE%20AMP_MARKETING%20VIDEO_GENERIC%20CONCERT_FINAL%20(1).mp4',
-    description:
-      'Working directly with the lead developer, I led frontend development and design for the platform.',
-    mainDisc:
-      'This was a platform built to provide near real-time analytics for programatically distributed advertisements, and use AI matching technology to pair brands with content.',
-    innovation:
-      'Built propritary ad tech incoporating live stream video within VAST ad compliant wrappers.',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/SailGP_Rolex_LiveLookIn_NoWatch.mp4',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/ftLive01.png',
-    websiteDesc:
-      'Web application was built to manage the front end analytics display and UX.',
-  },
-
   {
     slug: 'saksNYC',
     title: 'Saks 95th Anniversary Carousel',
-    role: 'Art Director',
-    video:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/saks.mp4',
-    tech: 'Adobe CS, Consumer Journey',
-    mainVideo:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/saks.mp4',
-    description:
-      'Working directly with the creative director, I led the art direction and user experience for this activation.',
-    mainDisc:
-      'The Saks Fifth Ave. Carousel was a dazzling and delightful luxury retail experience that allowed consumers to engage with the Saks brand in an exciting and eye-popping way. Our production team elegantly brought all of Saks’ main verticals to life, reimagining the traditional carousel horses as gigantic fashion pieces ranging from perfume bottles to sneakers and subway cars. In partnership with MasterCard, Saks offered carousel riders discounts on in-store purchases as the cherry on top of the ultimate New York City photo op.',
-    innovation:
-      'Built custom carousel experience designed to evoke the Saks brand and leave a lasting memory for those who experienced.',
-    innovationLink:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/saks__work4-2x1-1.mp4',
-    websiteImage:
-      'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/saks__work1-2x1-1.jpg',
-    websiteDesc:
-      '',
+    role: 'Art direction',
+    category: 'design',
+    featured: false,
+    order: 22,
+    client: 'Saks Fifth Avenue',
+    summary:
+      'Physical activation and consumer journey for a luxury carousel experience with MasterCard in-store offers.',
+    problem: 'Translate Saks verticals into a rideable, photographable NYC moment.',
+    ownership: 'Art direction and user experience of the activation.',
+    architecture: [],
+    stack: ['Art direction', 'Consumer journey'],
+    engineering: 'Physical experience — not a web product.',
+    outcome: 'A high-visibility brand activation in New York.',
+    poster: `${r2}/saks__work1-2x1-1.jpg`,
+    posterAlt: 'Saks carousel activation',
+    video: `${r2}/saks.mp4`,
   },
   {
-    slug: "tapped-beer-festival",
-    title: "Tapped Beer Festival",
-    role: "Sr. Designer",
-    video:"https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Tapped_main.mp4",
-    mainDisc:"I worked alongside the team to create a branding package for Tapped Beer Festival with its inaugural event at Barclays Center in Brooklyn. The package included logo design, style guide, and merchandise.",
-    mainVideo: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Tapped_pages.mp4',
-    innovationLink: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Tapped_irl.mp4'
+    slug: 'tapped-beer-festival',
+    title: 'Tapped Beer Festival',
+    role: 'Brand design',
+    category: 'design',
+    featured: false,
+    order: 23,
+    summary: 'Identity, style guide, and merchandise for the inaugural event at Barclays Center.',
+    problem: 'A new festival needed a complete visual system before doors.',
+    ownership: 'Branding package with the team.',
+    architecture: [],
+    stack: ['Identity', 'Print', 'Merchandise'],
+    engineering: 'Design system for a live event, not a software system.',
+    outcome: 'A launch-ready brand for Brooklyn’s first Tapped.',
+    video: `${r2}/Tapped_main.mp4`,
   },
   {
-    slug: "american-photo-magazine",
-    title: "American Photo Magazine | Bonnier Corp.",
-    role: "Sr. Designer and Photo Editor",
-    video:"https://pub-040eb69763f14186b11b39e2584847be.r2.dev/projects-AP.mp4",
-    mainDisc:"Working directly with the Editor in Cheif I was responsible for the print layout and production preflight of all editorial content, as well as, creating a digital version that was published to Apple books. The above are prind production covers and the below are editorial layouts.",
-    mainVideo: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/AP-Covers_1.mp4',
-    innovationLink: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/Ap-layouts-DipBlack%2002_1.mp4'
+    slug: 'american-photo-magazine',
+    title: 'American Photo Magazine',
+    role: 'Editorial design',
+    category: 'design',
+    featured: false,
+    order: 24,
+    client: 'Bonnier Corp.',
+    summary:
+      'Print layout, production preflight, and digital issues published to Apple Books, working with the editor in chief.',
+    problem: 'Ship two photo magazines on print and digital calendars without sacrificing craft.',
+    ownership: 'Layout, preflight, and digital packaging.',
+    architecture: [],
+    stack: ['Editorial design', 'Digital publishing'],
+    engineering: 'Digital editions as a packaging problem; the craft is editorial.',
+    outcome: 'National print issues and Apple Books versions.',
+    video: `${r2}/projects-AP.mp4`,
   },
   {
-    slug: "apapa-johns-pizza",
-    title: "Papa Johns Pizza",
-    role: "Sr. Designer and Social Media Content Creator",
-    video:"https://pub-040eb69763f14186b11b39e2584847be.r2.dev/projects-AP_1.mp4",
-    mainDisc:"Working directly with the Creative Director, we worked to crate social media telling the stories of Papa Johns franchise owners highlighting the joy and envolvement of their communities. We also followed a seasonal content plan that highlighted non-traditional holidays like National Pizza month and Nation Chicken month.",
-    mainVideo: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/papas_social.mp4',
-    innovationLink: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/papasSocialExamples.mp4'
+    slug: 'papa-johns-pizza',
+    title: 'Papa Johns Pizza',
+    role: 'Social content',
+    category: 'design',
+    featured: false,
+    order: 25,
+    client: 'Papa Johns',
+    summary: 'Franchise-owner stories and seasonal social, including non-traditional holidays.',
+    problem: 'Make a national food brand feel local without losing a content calendar.',
+    ownership: 'Social creative with the creative director.',
+    architecture: [],
+    stack: ['Social', 'Motion'],
+    engineering: 'Content production — archived here as design history.',
+    outcome: 'A seasonal and story-driven social run.',
+    video: `${r2}/projects-AP_1.mp4`,
   },
   {
-    slug: "kane-11-socks",
-    title: "Kane 11 Socks",
-    role: "Sr. Designer and Social Media Content Creator",
-    video:"https://pub-040eb69763f14186b11b39e2584847be.r2.dev/01.mp4",
-    mainDisc:"Working directly with the Creative Director, we crated social media for a new sock brand, Kane11.",
-    mainVideo: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/k11_social.mp4',
-    innovationLink: 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev/k11_social-bballgif.mp4'
+    slug: 'kane-11-socks',
+    title: 'Kane 11 Socks',
+    role: 'Social content',
+    category: 'design',
+    featured: false,
+    order: 26,
+    summary: 'Launch social for a new sock brand.',
+    problem: 'Introduce a new CPG brand with a small, sharp content set.',
+    ownership: 'Social creative with the creative director.',
+    architecture: [],
+    stack: ['Social', 'Motion'],
+    engineering: 'Content production.',
+    outcome: 'A launch feed for Kane 11.',
+    video: `${r2}/01.mp4`,
   },
 ];
+
+export function getFeaturedProjects() {
+  return projects
+    .filter((project) => project.featured)
+    .sort((a, b) => a.order - b.order);
+}
+
+export function getArchiveProjects() {
+  return projects
+    .filter((project) => !project.featured)
+    .sort((a, b) => a.order - b.order);
+}
+
+export function getProjectBySlug(slug: string) {
+  return projects.find((project) => project.slug === slug);
+}
+
+export function getAllProjects() {
+  return projects;
+}
 
 export default projects;
