@@ -93,13 +93,13 @@ const projects: Project[] = [
     featured: true,
     order: 2,
     nda: true,
-    dates: 'April 2025 – August 2025',
+    dates: 'April 2026 – August 2026',
     summary:
-      'A Vite multi-page web app in the live-music space (April–August 2025), wrapped in Capacitor for native iOS and early-stage TestFlight. Cloudflare Worker + D1, R2, Stream HLS, and Durable Objects. Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
+      'A Vite multi-page web app in the live-music space (April–August 2026), wrapped in Capacitor for native iOS and early-stage TestFlight. Cloudflare Worker + D1, R2, Stream HLS, and Durable Objects. Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
     problem:
       'The product needed a production-grade Vite multi-page frontend that could ship as an iOS app (TestFlight / App Store Connect) while still updating from the edge: authenticated sessions, multi-step forms, real-time state, and HLS playback — without leaking implementation details that would identify the app.',
     ownership:
-      'April–August 2025 I built and maintained the Vite multi-page web app and its Capacitor iOS shell: typed views, auth-aware routing, form flows, REST/JSON against a Worker on D1, media on Stream and R2, Durable Objects for real-time surfaces, and Worker-delivered web updates so TestFlight did not need a new native build for each change. CI ran on every meaningful change.',
+      'April–August 2026 I built and maintained the Vite multi-page web app and its Capacitor iOS shell: typed views, auth-aware routing, form flows, REST/JSON against a Worker on D1, media on Stream and R2, Durable Objects for real-time surfaces, and Worker-delivered web updates so TestFlight did not need a new native build for each change. CI ran on every meaningful change.',
     architecture: [
       {
         title: 'Native shell',
@@ -150,7 +150,7 @@ const projects: Project[] = [
       'R2 object storage',
     ],
     engineering:
-      'This is the most contemporary TypeScript work I can show (April–August 2025): a Vite multi-page web app in a Capacitor iOS wrapper, plus a Cloudflare Worker on D1, R2, Stream HLS, and Durable Objects. Web updates shipped through the Worker so TestFlight did not need a new native build for each change. The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
+      'This is the most contemporary TypeScript work I can show (April–August 2026): a Vite multi-page web app in a Capacitor iOS wrapper, plus a Cloudflare Worker on D1, R2, Stream HLS, and Durable Objects. Web updates shipped through the Worker so TestFlight did not need a new native build for each change. The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
     outcome:
       'A maintainable Vite multi-page + Capacitor structure that a hiring manager can evaluate: TestFlight delivery, Worker-driven updates, typed components, auth gating, forms, real-time state, media delivery, and an edge data layer — without violating the NDA.',
     demoUrl: '/demos/momentum',

@@ -21,7 +21,7 @@ export default function ResumePage() {
           Frontend engineer who ships production React, TypeScript, and Next.js. Five years building
           campaign platforms, analytics dashboards, and interactive video UIs at First Tube / Horizon
           Media — including REST integrations, 1PD microsites, and in-stream engagement. Works in
-          Git/PR review with lead engineers, PMs, and design. April–August 2025: Vite multi-page
+          Git/PR review with lead engineers, PMs, and design. April–August 2026: Vite multi-page
           web app in Capacitor (iOS TestFlight) for a live-music product (NDA).
         </p>
         <p className="mt-2">
@@ -44,7 +44,7 @@ export default function ResumePage() {
         <section className="mt-2.5">
           <div className="flex flex-wrap justify-between gap-x-4">
             <h3 className="font-semibold">Founding Engineer</h3>
-            <p>April 2025 – August 2025</p>
+            <p>April 2026 – August 2026</p>
           </div>
           <p className="italic">Confidential live-music product (NDA)</p>
           <ul className="mt-1 list-disc space-y-0.5 pl-5">

@@ -59,7 +59,7 @@ export default function AboutPage() {
           <p>
             I do not claim ten years of React. I claim ten-plus years shipping digital work, five-plus
             years of production frontend at Horizon (HTML/CSS/JS through Next.js), and a Vite
-            multi-page web app in Capacitor (April–August 2025, NDA; iOS TestFlight). The case studies
+            multi-page web app in Capacitor (April–August 2026, NDA; iOS TestFlight). The case studies
             are the proof.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function AboutPage() {
             <li>
               <h3 className="text-xl font-semibold">Founding Engineer</h3>
               <p className="text-sm text-fg-muted">
-                Confidential live-music product (NDA) · April 2025 – August 2025
+                Confidential live-music product (NDA) · April 2026 – August 2026
               </p>
               <p className="mt-2 leading-relaxed text-fg-muted">
                 Shipped a dynamically built Vite multi-page web app in TypeScript and Tailwind, wrapped in
