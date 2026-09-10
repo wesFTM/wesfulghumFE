@@ -19,7 +19,8 @@ src/
   app/
     (portfolio)/     Site chrome: home, about, archive, resume, case studies
     demos/           Restored / sanitized interactive demos
-    api/kpis/        Fixture REST JSON for the analytics dashboard
+    api/kpis/        Fixture REST JSON for the analytics case-study widget
+    api/ftlive/      Fixture REST JSON for the FT Live dashboard demo
   components/
     ui/              Button, Tag, Container
     demos/           Demo-only clients (forms, canvas photobooth, overlays)
@@ -34,7 +35,7 @@ Case studies live in [`src/data/projects.ts`](src/data/projects.ts). Featured wo
 | --- | --- |
 | `/demos/the-general` | VAST player shell + validated 1PD form (no list writes) |
 | `/demos/bacardi` | Overlays, merch modal, canvas photobooth, sweeps form |
-| `/demos/ftlive` | Dashboard UI consuming `GET /api/kpis` |
+| `/demos/ftlive` | Campaign analytics dashboard consuming `GET /api/ftlive` |
 | `/demos/michelob` | Content platform shell + dismissible overlay |
 | `/demos/momentum` | NDA-safe patterns: Context auth, forms, media state |
 
