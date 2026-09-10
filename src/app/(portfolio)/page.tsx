@@ -72,7 +72,7 @@ export default function HomePage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            github.com/wesFTM/wesfulghumFE
+            github.com/SoundTVmedia/wesfulghumFE
           </a>
           .
         </p>
