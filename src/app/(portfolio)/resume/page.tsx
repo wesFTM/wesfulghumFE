@@ -36,10 +36,6 @@ export default function ResumePage() {
           |{' '}
           <a href={site.linkedin} className="text-black underline">
             linkedin.com/in/wes-fulghum-a3045273
-          </a>{' '}
-          |{' '}
-          <a href={site.domain} className="text-black underline">
-            wesfulghum.com
           </a>
         </p>
 

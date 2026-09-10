@@ -172,14 +172,19 @@ const projects: Project[] = [
       'Working with the lead developer, I led frontend implementation and interface design in Figma and Next.js — layout system, content modules, and the overlay/giveaway interactions.',
     architecture: [
       {
+        title: 'RSVP state',
+        detail:
+          'Index is RSVP or welcome depending on registration. Lookup recovers a prior RSVP by email. Register and lookup are REST endpoints; production used Firebase + Sendgrid, the public demo uses fixture JSON.',
+      },
+      {
         title: 'App shell',
         detail:
-          'Next.js routes for home, sessions, events, and merch share a typed layout and navigation so new drops do not require a new site.',
+          'After RSVP, Next.js-style routes for live, sessions, and merch share a layout so new drops do not require a new site.',
       },
       {
         title: 'Content modules',
         detail:
-          'Workout cards, event blocks, and merch tiles are reusable. CMS-like JSON drives what renders; the UI does not hard-code a single season.',
+          'Workout cards, event blocks, and merch tiles are reusable. JSON drives what renders; the UI does not hard-code a single season.',
       },
       {
         title: 'In-stream layer',
@@ -187,12 +192,12 @@ const projects: Project[] = [
           'Clickable overlays, discount codes, and giveaway prompts sit above the player as a separate interaction layer so playback and CTAs do not fight each other.',
       },
     ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Figma', 'HTML/CSS'],
-    apis: ['Content/session JSON', 'Promo and giveaway config'],
+    stack: ['Next.js', 'React', 'TypeScript', 'Sass', 'Firebase', 'Sendgrid', 'GitHub Actions'],
+    apis: ['POST /api/register', 'GET /api/lookup', 'Maestro account create (production)', 'Promo overlay config'],
     engineering:
       'The platform is a composition problem: keep the player stable while overlays, codes, and merch CTAs change per event. I treated overlays as UI, not burned-in video, so they could be timed, dismissed, and reused.',
     outcome:
-      'A branded hub for workouts and live events that could take new sessions without rebuilding the front end. The public demo is a sanitized UI with mock content.',
+      'A branded hub for workouts and live events that could take new sessions without rebuilding the front end. The public demo is a full RSVP → hub flow with fixture users, session stills, merch, and a player overlay.',
     demoUrl: '/demos/michelob',
     demoLabel: 'Launch platform demo',
     poster: `${r2}/MU_WebImage.png`,

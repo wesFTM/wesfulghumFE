@@ -1,21 +1,10 @@
 import type { Metadata } from 'next';
-import DemoShell from '@/components/demos/DemoShell';
-import MovementPlatform from '@/components/demos/MovementPlatform';
+import MovementLiveApp from '@/components/demos/MovementLiveApp';
 
 export const metadata: Metadata = {
-  title: 'Demo — Michelob Ultra Movement',
+  title: 'Demo — Michelob Ultra Movement Live',
 };
 
 export default function MichelobDemoPage() {
-  return (
-    <DemoShell
-      eyebrow="Sanitized platform UI"
-      title="Movement Live"
-      backHref="/projects/michelob"
-      theme="light"
-      note="Mock sessions and overlay chrome. Not the production Michelob app."
-    >
-      <MovementPlatform />
-    </DemoShell>
-  );
+  return <MovementLiveApp />;
 }

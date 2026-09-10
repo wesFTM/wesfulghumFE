@@ -21,6 +21,7 @@ src/
     demos/           Restored / sanitized interactive demos
     api/kpis/        Fixture REST JSON for the analytics case-study widget
     api/ftlive/      Fixture REST JSON for the FT Live dashboard demo
+    api/movement/    Fixture REST JSON for the Movement Live RSVP/hub demo
   components/
     ui/              Button, Tag, Container
     demos/           Demo-only clients (forms, canvas photobooth, overlays)
@@ -36,7 +37,7 @@ Case studies live in [`src/data/projects.ts`](src/data/projects.ts). Featured wo
 | `/demos/the-general` | VAST player shell + validated 1PD form (no list writes) |
 | `/demos/bacardi` | Overlays, merch modal, canvas photobooth, sweeps form |
 | `/demos/ftlive` | Campaign analytics dashboard consuming `GET /api/ftlive` |
-| `/demos/michelob` | Content platform shell + dismissible overlay |
+| `/demos/michelob` | Movement Live RSVP, lookup, sessions, merch, player overlay (`GET/POST /api/movement`) |
 | `/demos/momentum` | NDA-safe patterns: Context auth, forms, media state |
 
 ## Local
