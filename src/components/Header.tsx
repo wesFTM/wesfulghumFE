@@ -31,14 +31,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={site.github}
-            className="text-fg-muted hover:text-fg"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
           <a href={`mailto:${site.email}`} className="text-fg-muted hover:text-fg">
             Contact
           </a>
@@ -68,11 +60,6 @@ export default function Header() {
                 </Link>
               </li>
             ))}
-            <li>
-              <a href={site.github} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            </li>
             <li>
               <a href={`mailto:${site.email}`}>Contact</a>
             </li>

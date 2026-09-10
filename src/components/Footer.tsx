@@ -9,9 +9,6 @@ export default function Footer() {
           {site.name} · {site.location}
         </p>
         <nav className="flex flex-wrap gap-5" aria-label="Footer">
-          <a href={site.github} target="_blank" rel="noopener noreferrer" className="hover:text-fg">
-            GitHub
-          </a>
           <a
             href={site.linkedin}
             target="_blank"
