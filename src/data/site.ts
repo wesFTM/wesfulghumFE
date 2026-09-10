@@ -4,7 +4,7 @@ export const site = {
   location: 'New York City',
   email: 'wfulghum@gmail.com',
   github: 'https://github.com/wesFTM',
-  githubRepo: 'https://github.com/SoundTVmedia/wesfulghumFE',
+  githubRepo: 'https://github.com/wesFTM/wesfulghumFE',
   linkedin: 'https://www.linkedin.com/in/wes-fulghum-a3045273/',
   resumePdf: '/WesleyFulghumResume2025.pdf',
   domain: 'https://wesfulghum.com',

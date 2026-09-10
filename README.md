@@ -54,6 +54,6 @@ npm run lint
 
 ## GitHub
 
-- This preview repo: [github.com/SoundTVmedia/wesfulghumFE](https://github.com/SoundTVmedia/wesfulghumFE)
+- This preview repo: [github.com/wesFTM/wesfulghumFE](https://github.com/wesFTM/wesfulghumFE)
 - Live site repo (unchanged): [github.com/wesFTM/newPortfolio](https://github.com/wesFTM/newPortfolio)
 - Profile: [github.com/wesFTM](https://github.com/wesFTM)
