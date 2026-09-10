@@ -39,7 +39,7 @@ export default function ResumePage() {
         <section className="mt-8">
           <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">Summary</h2>
           <p className="mt-3 leading-relaxed text-fg-muted">
-            Senior frontend engineer focused on React, TypeScript, and Next.js. Five years shipping
+            Frontend engineer focused on React, TypeScript, and Next.js. Five years shipping
             production web apps, campaign platforms, and interactive media at First Tube / Horizon
             Media. Integrates REST APIs and complex JSON into maintainable UIs; partners with design
             and product in Agile. Ten-plus years in digital craft; does not pad React tenure.

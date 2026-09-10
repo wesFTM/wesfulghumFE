@@ -19,7 +19,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-border/80 bg-bg/85 backdrop-blur-md print:hidden">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4 md:px-8">
         <Link href="/" className="min-w-0">
-          <span className="block truncate text-sm font-semibold tracking-tight text-fg">
+          <span className="block truncate text-lg font-semibold tracking-tight text-fg md:text-xl">
             {site.name}
           </span>
           <span className="block truncate text-xs text-fg-muted">{site.title}</span>

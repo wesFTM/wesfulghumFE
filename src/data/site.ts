@@ -1,6 +1,6 @@
 export const site = {
   name: 'Wes Fulghum',
-  title: 'Senior Frontend Engineer',
+  title: 'Frontend Engineer',
   location: 'New York City',
   email: 'wfulghum@gmail.com',
   github: 'https://github.com/wesFTM',

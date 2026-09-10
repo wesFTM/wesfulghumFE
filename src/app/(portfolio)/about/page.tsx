@@ -7,7 +7,7 @@ import { site } from '@/data/site';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Wes Fulghum is a senior frontend engineer in New York. React, TypeScript, Next.js. Previously First Tube / Horizon Media.',
+    'Wes Fulghum is a frontend engineer in New York. React, TypeScript, Next.js. Previously First Tube / Horizon Media.',
 };
 
 const skills = [

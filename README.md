@@ -1,6 +1,6 @@
 # Wes Fulghum — Frontend Portfolio
 
-Preview repo for the senior frontend engineer site. The live domain still points at [`wesFTM/newPortfolio`](https://github.com/wesFTM/newPortfolio) until this is promoted.
+Preview repo for the frontend engineer site. The live domain still points at [`wesFTM/newPortfolio`](https://github.com/wesFTM/newPortfolio) until this is promoted.
 
 This is a **Next.js 15 App Router** app in **TypeScript** and **Tailwind CSS**. It is both the portfolio and a work sample — server components by default, a small UI kit, typed content, and live demos that fetch a fixture REST endpoint.
 

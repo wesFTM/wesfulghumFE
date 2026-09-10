@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    'Senior frontend engineer in New York. React, TypeScript, Next.js. Production apps, campaign platforms, and interactive media. Previously First Tube / Horizon Media.',
+    'Frontend engineer in New York. React, TypeScript, Next.js. Production apps, campaign platforms, and interactive media. Previously First Tube / Horizon Media.',
   openGraph: {
     title: `${site.name} — ${site.title}`,
     description: site.pitch,
