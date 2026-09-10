@@ -88,7 +88,7 @@ const projects: Project[] = [
   {
     slug: 'momentum',
     title: 'Live Music Application',
-    role: 'Frontend Engineer',
+    role: 'Founding Engineer',
     category: 'engineering',
     featured: true,
     order: 2,

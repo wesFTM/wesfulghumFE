@@ -43,7 +43,7 @@ export default function ResumePage() {
 
         <section className="mt-2.5">
           <div className="flex flex-wrap justify-between gap-x-4">
-            <h3 className="font-semibold">Frontend Engineer</h3>
+            <h3 className="font-semibold">Founding Engineer</h3>
             <p>April 2025 – August 2025</p>
           </div>
           <p className="italic">Confidential live-music product (NDA)</p>

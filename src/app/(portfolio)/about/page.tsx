@@ -70,7 +70,7 @@ export default function AboutPage() {
           </h2>
           <ul className="mt-6 space-y-8">
             <li>
-              <h3 className="text-xl font-semibold">Frontend Engineer</h3>
+              <h3 className="text-xl font-semibold">Founding Engineer</h3>
               <p className="text-sm text-fg-muted">
                 Confidential live-music product (NDA) · April 2025 – August 2025
               </p>
