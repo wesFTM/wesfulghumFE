@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import Container from '@/components/ui/Container';
-import Button from '@/components/ui/Button';
 import PrintButton from '@/components/PrintButton';
 import { site } from '@/data/site';
 
@@ -11,127 +9,149 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <main>
-      <Container className="max-w-3xl pb-20 pt-16 md:pt-20 print:max-w-none print:px-0 print:pt-0">
-        <div className="flex flex-col gap-4 print:hidden sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-medium uppercase tracking-[0.16em] text-accent">Resume</p>
-          <div className="flex gap-3">
-            <PrintButton />
-            <Button href={`mailto:${site.email}`}>Email</Button>
+    <main className="bg-white text-black">
+      <div className="mx-auto flex max-w-[8.5in] justify-end px-6 pt-6 print:hidden">
+        <PrintButton />
+      </div>
+
+      <article className="mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-snug print:max-w-none print:px-0 print:pb-0 print:pt-0">
+        <h1 className="text-xl font-semibold">{site.name}</h1>
+        <p className="mt-0.5 font-medium">{site.title}</p>
+        <p className="mt-3 max-w-[7.2in]">
+          Frontend engineer who ships production React, TypeScript, and Next.js. Five years building
+          campaign platforms, analytics dashboards, and interactive video UIs at First Tube / Horizon
+          Media — including REST integrations, 1PD microsites, and in-stream engagement. Works in
+          Git/PR review with lead engineers, PMs, and design. Currently building a React SPA in
+          TypeScript (NDA).
+        </p>
+        <p className="mt-2">
+          New York, NY |{' '}
+          <a href={site.phoneHref} className="text-black underline">
+            {site.phone}
+          </a>{' '}
+          |{' '}
+          <a href={`mailto:${site.email}`} className="text-black underline">
+            {site.email}
+          </a>{' '}
+          |{' '}
+          <a href={site.linkedin} className="text-black underline">
+            linkedin.com/in/wes-fulghum-a3045273
+          </a>{' '}
+          |{' '}
+          <a href={site.domain} className="text-black underline">
+            wesfulghum.com
+          </a>
+        </p>
+
+        <h2 className="mt-5 border-b border-black pb-0.5 text-base font-semibold">Experience</h2>
+
+        <section className="mt-3">
+          <div className="flex flex-wrap justify-between gap-x-4">
+            <h3 className="font-semibold">Frontend Engineer</h3>
+            <p>2025 – Present</p>
           </div>
-        </div>
-
-        <header className="mt-8 border-b border-border pb-8">
-          <h1 className="text-4xl font-semibold tracking-tight">{site.name}</h1>
-          <p className="mt-1 text-lg text-fg-muted">{site.title}</p>
-          <p className="mt-3 text-sm text-fg-muted">
-            {site.location} · {site.email} ·{' '}
-            <a href={site.github} className="underline">
-              github.com/wesFTM
-            </a>{' '}
-            ·{' '}
-            <a href={site.domain} className="underline">
-              wesfulghum.com
-            </a>
-          </p>
-        </header>
-
-        <section className="mt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">Summary</h2>
-          <p className="mt-3 leading-relaxed text-fg-muted">
-            Frontend engineer focused on React, TypeScript, and Next.js. Five years shipping
-            production web apps, campaign platforms, and interactive media at First Tube / Horizon
-            Media. Integrates REST APIs and complex JSON into maintainable UIs; partners with design
-            and product in Agile. Ten-plus years in digital craft; does not pad React tenure.
-          </p>
+          <p className="italic">Confidential live-music product (NDA)</p>
+          <ul className="mt-1 list-disc space-y-0.5 pl-5">
+            <li>
+              Building a React SPA in TypeScript and Tailwind: auth-gated routes, multi-step forms with
+              client validation, and Context for session state.
+            </li>
+            <li>
+              Media playback UI with explicit loading, buffering, and error states; CI on each
+              meaningful change.
+            </li>
+          </ul>
         </section>
 
-        <section className="mt-10">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-            Experience
-          </h2>
-          <div className="mt-6 space-y-8">
-            <div>
-              <div className="flex flex-col justify-between gap-1 sm:flex-row">
-                <h3 className="font-semibold">Frontend Engineer & Design Director</h3>
-                <p className="text-sm text-fg-muted">May 2020 – May 2025</p>
-              </div>
-              <p className="text-sm text-fg-muted">First Tube — Horizon Media · New York</p>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-fg-muted">
-                <li>
-                  Designed and developed scalable frontends in React, Next.js, TypeScript, and
-                  HTML/CSS/JS for event hubs, livestream portals, 1PD microsites, and tracking
-                  dashboards.
-                </li>
-                <li>
-                  Architected reusable component UIs for campaign platforms (Michelob Ultra Movement)
-                  and analytics (FT Live), including REST integration against social aggregator JSON
-                  (YouTube, TikTok, Meta, X, DV360).
-                </li>
-                <li>
-                  Built interactive media features: clickable overlays, in-stream shopping, digital
-                  photobooths, promo-code flows, and a VAST-compliant live ad unit.
-                </li>
-                <li>
-                  Used Git (branches, pull requests, reviews) with a lead engineer; shipped on AWS and
-                  GitHub-based release paths; worked Agile with PMs, brand, and backend.
-                </li>
-                <li>
-                  Debugged browser, network, and player issues across mobile Safari, autoplay policy,
-                  CORS, and ad environments.
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex flex-col justify-between gap-1 sm:flex-row">
-                <h3 className="font-semibold">Senior Designer</h3>
-                <p className="text-sm text-fg-muted">April 2015 – April 2020</p>
-              </div>
-              <p className="text-sm text-fg-muted">Endeavor — 160over90 / WME | IMG · New York</p>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-fg-muted">
-                <li>
-                  Expanded a design team and led campaign systems, pitch materials, and
-                  designer–stakeholder collaboration — still the way I work with product design.
-                </li>
-              </ul>
-            </div>
-            <div>
-              <div className="flex flex-col justify-between gap-1 sm:flex-row">
-                <h3 className="font-semibold">Lead Designer</h3>
-                <p className="text-sm text-fg-muted">March 2012 – April 2015</p>
-              </div>
-              <p className="text-sm text-fg-muted">
-                Bonnier Corp. — Popular Photography & American Photo · New York
-              </p>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-fg-muted">
-                <li>
-                  Editorial layout, production preflight, and digital issues for Apple Books.
-                </li>
-              </ul>
-            </div>
+        <section className="mt-3">
+          <div className="flex flex-wrap justify-between gap-x-4">
+            <h3 className="font-semibold">Frontend Engineer</h3>
+            <p>May 2020 – May 2025</p>
           </div>
+          <p className="italic">First Tube — Horizon Media | New York</p>
+          <ul className="mt-1 list-disc space-y-0.5 pl-5">
+            <li>
+              Built production frontends in React, Next.js, TypeScript, and HTML/CSS/JS for branded
+              platforms, livestream portals, sweepstakes microsites, and campaign dashboards.
+            </li>
+            <li>
+              FT Live analytics: consumed REST aggregator JSON (YouTube, TikTok, Meta, X, DV360) and
+              mapped nested payloads into a reusable dashboard so ops could watch KPIs without weekly
+              exports.
+            </li>
+            <li>
+              Michelob Ultra Movement: Next.js content platform for workouts, merch, and live events;
+              overlays, discount codes, and giveaways as DOM on the player, not burned-in video.
+            </li>
+            <li>
+              Casa Bacardi and Anheuser-Busch Reventón: clickable livestream overlays, in-stream merch,
+              promo codes, and a canvas photobooth for remote viewers.
+            </li>
+            <li>
+              The General Sound Studio: VAST-compliant wrapper around a live studio feed for
+              programmatic distribution, plus a 1PD landing page with client-side validation (Mailchimp).
+            </li>
+            <li>
+              Southwest Hawaii Heartbeats: geo-limited sweepstakes UI (Hawaii residents) so eligibility
+              lived in the form, not only in legal copy.
+            </li>
+            <li>
+              Git branching, pull requests, and reviews with a lead engineer; AWS-hosted campaign apps;
+              Agile with product and brand. Debugged CORS, autoplay policy, mobile Safari, and
+              ad-blocked players.
+            </li>
+          </ul>
         </section>
 
-        <section className="mt-10">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-            Skills
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-fg-muted">
-            React, TypeScript, JavaScript (ES6+), HTML5, CSS3, Next.js, Tailwind, REST APIs, JSON,
-            Context API, Git, AWS, browser/network/performance debugging, Agile, Figma. Domain: VAST
-            / interactive video, 1PD campaign forms.
-          </p>
+        <section className="mt-3">
+          <div className="flex flex-wrap justify-between gap-x-4">
+            <h3 className="font-semibold">Senior Designer</h3>
+            <p>April 2015 – April 2020</p>
+          </div>
+          <p className="italic">Endeavor — 160over90 / WME | IMG | New York</p>
+          <ul className="mt-1 list-disc space-y-0.5 pl-5">
+            <li>
+              Grew a design team from 3 to 15 and ran campaign systems with writers and stakeholders —
+              the same collaboration model used later with PMs and engineers.
+            </li>
+          </ul>
         </section>
 
-        <section className="mt-10">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-            Education
-          </h2>
-          <p className="mt-3 text-sm text-fg-muted">
-            Associate of Science, Interactive Media Design · The Art Institute of New York City · 2011
-          </p>
+        <section className="mt-3">
+          <div className="flex flex-wrap justify-between gap-x-4">
+            <h3 className="font-semibold">Lead Designer</h3>
+            <p>March 2012 – April 2015</p>
+          </div>
+          <p className="italic">Bonnier Corp. — Popular Photography & American Photo | New York</p>
+          <ul className="mt-1 list-disc space-y-0.5 pl-5">
+            <li>
+              Shipped editorial layout and production preflight for two national magazines, plus digital
+              editions for Apple Books.
+            </li>
+          </ul>
         </section>
-      </Container>
+
+        <h2 className="mt-5 border-b border-black pb-0.5 text-base font-semibold">Skills</h2>
+        <ul className="mt-2 list-disc space-y-0.5 pl-5">
+          <li>
+            <span className="font-semibold">Frontend:</span> React, Next.js, TypeScript, JavaScript
+            (ES6+), HTML5, CSS3, Tailwind, Context API
+          </li>
+          <li>
+            <span className="font-semibold">Integration & delivery:</span> REST APIs, JSON data models,
+            Git (branches, PRs, reviews), AWS, Vercel, Agile
+          </li>
+          <li>
+            <span className="font-semibold">Media & campaigns:</span> VAST, livestream overlays, 1PD /
+            sweepstakes forms, Canvas, Figma
+          </li>
+        </ul>
+
+        <h2 className="mt-5 border-b border-black pb-0.5 text-base font-semibold">Education</h2>
+        <p className="mt-2">
+          Associate of Science, Interactive Media Design | The Art Institute of New York City | 2011
+        </p>
+      </article>
     </main>
   );
 }

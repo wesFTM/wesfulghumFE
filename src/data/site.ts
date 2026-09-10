@@ -3,6 +3,8 @@ export const site = {
   title: 'Frontend Engineer',
   location: 'New York City',
   email: 'wfulghum@gmail.com',
+  phone: '(803) 257-4186',
+  phoneHref: 'tel:+18032574186',
   github: 'https://github.com/wesFTM',
   githubRepo: 'https://github.com/wesFTM/wesfulghumFE',
   linkedin: 'https://www.linkedin.com/in/wes-fulghum-a3045273/',
