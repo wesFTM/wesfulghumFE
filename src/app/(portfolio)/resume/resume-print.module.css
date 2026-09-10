@@ -1,0 +1,59 @@
+@media print {
+  :global(html),
+  :global(body) {
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  :global(header),
+  :global(footer),
+  :global(nextjs-portal) {
+    display: none !important;
+  }
+
+  .sheet {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.18 !important;
+  }
+
+  .sheet h1 {
+    font-size: 14pt !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+  }
+
+  .sheet h2 {
+    font-size: 10.5pt !important;
+    margin-top: 8pt !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 1pt !important;
+  }
+
+  .sheet h3 {
+    font-size: 9.5pt !important;
+    margin: 0 !important;
+  }
+
+  .sheet section {
+    margin-top: 5pt !important;
+  }
+
+  .sheet ul {
+    margin-top: 2pt !important;
+  }
+
+  .sheet p,
+  .sheet li {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PrintButton from '@/components/PrintButton';
 import { site } from '@/data/site';
+import printStyles from './resume-print.module.css';
 
 export const metadata: Metadata = {
   title: 'Resume',
@@ -14,7 +15,7 @@ export default function ResumePage() {
         <PrintButton />
       </div>
 
-      <article className="mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-tight print:max-w-none print:px-0 print:pb-0 print:pt-0">
+      <article className={`${printStyles.sheet} resume-sheet mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-tight print:max-w-none print:px-0 print:py-0`}>
         <h1 className="text-xl font-semibold">{site.name}</h1>
         <p className="mt-0.5 font-medium">{site.title}</p>
         <p className="mt-3 max-w-[7.2in]">
@@ -140,20 +141,14 @@ export default function ResumePage() {
         </section>
 
         <h2 className="mt-4 border-b border-black pb-0.5 text-base font-semibold">Skills</h2>
-        <ul className="mt-2 list-disc space-y-0.5 pl-5">
-          <li>
-            <span className="font-semibold">Frontend:</span> React, Next.js, TypeScript, JavaScript
-            (ES6+), HTML5, CSS3, Tailwind, Context API
-          </li>
-          <li>
-            <span className="font-semibold">Integration & delivery:</span> REST APIs, JSON data models,
-            Git (branches, PRs, reviews), AWS, Vercel, Agile
-          </li>
-          <li>
-            <span className="font-semibold">Media & campaigns:</span> VAST, livestream overlays, 1PD /
-            sweepstakes forms, Canvas, Figma
-          </li>
-        </ul>
+        <p className="mt-2">
+          <span className="font-semibold">Frontend:</span> React, Next.js, TypeScript, JavaScript
+          (ES6+), HTML5, CSS3, Tailwind, Context API.{' '}
+          <span className="font-semibold">Integration & delivery:</span> REST APIs, JSON data models,
+          Git (branches, PRs, reviews), AWS, Vercel, Agile.{' '}
+          <span className="font-semibold">Media & campaigns:</span> VAST, livestream overlays, 1PD /
+          sweepstakes forms, Canvas, Figma.
+        </p>
 
         <h2 className="mt-4 border-b border-black pb-0.5 text-base font-semibold">Education</h2>
         <p className="mt-2">

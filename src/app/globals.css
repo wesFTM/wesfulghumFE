@@ -57,18 +57,68 @@ a {
 }
 
 @media print {
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  html,
+  body,
+  body.min-h-screen {
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
   header,
-  footer {
+  footer,
+  nextjs-portal {
     display: none !important;
   }
 
-  body {
-    background: #fff;
-    color: #111;
+  /* Dense enough for Chrome default margins + headers/footers. */
+  .resume-sheet {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.18 !important;
   }
 
-  @page {
-    size: letter;
-    margin: 0.4in;
+  .resume-sheet h1 {
+    font-size: 14pt !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+  }
+
+  .resume-sheet h2 {
+    font-size: 10.5pt !important;
+    margin-top: 8pt !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 1pt !important;
+  }
+
+  .resume-sheet h3 {
+    font-size: 9.5pt !important;
+    margin: 0 !important;
+  }
+
+  .resume-sheet section {
+    margin-top: 5pt !important;
+  }
+
+  .resume-sheet ul {
+    margin-top: 2pt !important;
+  }
+
+  .resume-sheet p,
+  .resume-sheet li {
+    break-inside: auto;
+    page-break-inside: auto;
   }
 }
