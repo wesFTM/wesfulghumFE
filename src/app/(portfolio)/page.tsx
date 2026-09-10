@@ -30,9 +30,6 @@ export default function HomePage() {
         </div>
         <div className="mt-10 flex flex-wrap gap-3">
           <Button href="/#work">View work</Button>
-          <Button href={site.github} variant="secondary" external>
-            GitHub
-          </Button>
           <Button href="/resume" variant="secondary">
             Resume
           </Button>
