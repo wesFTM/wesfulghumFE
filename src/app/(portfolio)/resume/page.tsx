@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import PrintButton from '@/components/PrintButton';
 import { site } from '@/data/site';
-import printStyles from './resume-print.module.css';
 
 export const metadata: Metadata = {
   title: 'Resume',
@@ -15,7 +14,7 @@ export default function ResumePage() {
         <PrintButton />
       </div>
 
-      <article className={`${printStyles.sheet} resume-sheet mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-tight print:max-w-none print:px-0 print:py-0`}>
+      <article className="resume-sheet mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-tight print:max-w-none print:px-0 print:py-0">
         <h1 className="text-xl font-semibold">{site.name}</h1>
         <p className="mt-0.5 font-medium">{site.title}</p>
         <p className="mt-3 max-w-[7.2in]">
