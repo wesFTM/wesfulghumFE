@@ -27,6 +27,7 @@ export type Project = {
   video?: string;
   nda?: boolean;
   client?: string;
+  dates?: string;
 };
 
 const r2 = 'https://pub-040eb69763f14186b11b39e2584847be.r2.dev';
@@ -92,12 +93,13 @@ const projects: Project[] = [
     featured: true,
     order: 2,
     nda: true,
+    dates: 'April 2025 – August 2025',
     summary:
-      'A React SPA in the live-music space. Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
+      'A React SPA in the live-music space (April–August 2025). Under NDA I can talk about the architecture and technologies — not the product name, client, or branded UI.',
     problem:
       'The product needed a production-grade frontend: authenticated sessions, multi-step forms, durable client state, and media playback — without leaking implementation details that would identify the app.',
     ownership:
-      'I am building and maintaining the frontend: typed views, auth-aware routing, form flows, and media surfaces. CI runs on every meaningful change.',
+      'April–August 2025 I built and maintained the frontend: typed views, auth-aware routing, form flows, REST/JSON integration, and media surfaces. CI ran on every meaningful change.',
     architecture: [
       {
         title: 'Auth boundary',
@@ -131,7 +133,7 @@ const projects: Project[] = [
     ],
     apis: ['Authenticated REST for session and resources', 'Media source URLs'],
     engineering:
-      'This is the most contemporary React/TypeScript work I can show. The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
+      'This is the most contemporary React/TypeScript work I can show (April–August 2025). The public demo is a sanitized reconstruction of patterns only: a fake sign-in, a validated form, a player shell, and a small Context store. No branding, no real users, no production endpoints.',
     outcome:
       'A maintainable SPA structure that a hiring manager can evaluate: typed components, auth gating, forms, state boundaries, and media — without violating the NDA.',
     demoUrl: '/demos/momentum',

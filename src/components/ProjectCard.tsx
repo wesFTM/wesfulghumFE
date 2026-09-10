@@ -49,7 +49,10 @@ export default function ProjectCard({ project, compact = false }: ProjectCardPro
           <h3 className="text-lg font-semibold tracking-tight group-hover:text-accent">
             {project.title}
           </h3>
-          <p className="mt-1 text-sm text-fg-muted">{project.role}</p>
+          <p className="mt-1 text-sm text-fg-muted">
+            {project.role}
+            {project.dates ? ` · ${project.dates}` : ''}
+          </p>
         </div>
         {!compact && (
           <p className="text-sm leading-relaxed text-fg-muted">{project.summary}</p>

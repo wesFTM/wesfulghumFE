@@ -52,8 +52,8 @@ export default function AboutPage() {
           </p>
           <p>
             I do not claim ten years of React. I claim ten-plus years shipping digital work, five-plus
-            years of production frontend at Horizon (HTML/CSS/JS through Next.js), and current React
-            SPA work in TypeScript. The case studies are the proof.
+            years of production frontend at Horizon (HTML/CSS/JS through Next.js), and a React SPA in
+            TypeScript (April–August 2025, NDA). The case studies are the proof.
           </p>
         </div>
 
@@ -62,6 +62,18 @@ export default function AboutPage() {
             Experience
           </h2>
           <ul className="mt-6 space-y-8">
+            <li>
+              <h3 className="text-xl font-semibold">Frontend Engineer</h3>
+              <p className="text-sm text-fg-muted">
+                Confidential live-music product (NDA) · April 2025 – August 2025
+              </p>
+              <p className="mt-2 leading-relaxed text-fg-muted">
+                Shipped a React SPA in TypeScript and Tailwind: auth-gated routes, multi-step forms
+                with client validation, Context for session state, REST/JSON for authenticated
+                resources, and a media playback UI with loading, buffering, and error handling. Git
+                branches, pull requests, and CI on each meaningful change.
+              </p>
+            </li>
             <li>
               <h3 className="text-xl font-semibold">Frontend Engineer & Design Director</h3>
               <p className="text-sm text-fg-muted">First Tube | Horizon Media · May 2020 – May 2025</p>

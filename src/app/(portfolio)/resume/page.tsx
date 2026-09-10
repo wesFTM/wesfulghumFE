@@ -14,15 +14,15 @@ export default function ResumePage() {
         <PrintButton />
       </div>
 
-      <article className="mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-snug print:max-w-none print:px-0 print:pb-0 print:pt-0">
+      <article className="mx-auto max-w-[8.5in] px-6 pb-16 pt-4 text-[13px] leading-tight print:max-w-none print:px-0 print:pb-0 print:pt-0">
         <h1 className="text-xl font-semibold">{site.name}</h1>
         <p className="mt-0.5 font-medium">{site.title}</p>
         <p className="mt-3 max-w-[7.2in]">
           Frontend engineer who ships production React, TypeScript, and Next.js. Five years building
           campaign platforms, analytics dashboards, and interactive video UIs at First Tube / Horizon
           Media — including REST integrations, 1PD microsites, and in-stream engagement. Works in
-          Git/PR review with lead engineers, PMs, and design. Currently building a React SPA in
-          TypeScript (NDA).
+          Git/PR review with lead engineers, PMs, and design. April–August 2025: React SPA in
+          TypeScript for a live-music product (NDA).
         </p>
         <p className="mt-2">
           New York, NY |{' '}
@@ -43,22 +43,30 @@ export default function ResumePage() {
           </a>
         </p>
 
-        <h2 className="mt-5 border-b border-black pb-0.5 text-base font-semibold">Experience</h2>
+        <h2 className="mt-4 border-b border-black pb-0.5 text-base font-semibold">Experience</h2>
 
-        <section className="mt-3">
+        <section className="mt-2.5">
           <div className="flex flex-wrap justify-between gap-x-4">
             <h3 className="font-semibold">Frontend Engineer</h3>
-            <p>2025 – Present</p>
+            <p>April 2025 – August 2025</p>
           </div>
           <p className="italic">Confidential live-music product (NDA)</p>
           <ul className="mt-1 list-disc space-y-0.5 pl-5">
             <li>
-              Building a React SPA in TypeScript and Tailwind: auth-gated routes, multi-step forms with
-              client validation, and Context for session state.
+              Shipped a React SPA in TypeScript and Tailwind: reusable components, typed props, and
+              public vs authenticated route splits.
             </li>
             <li>
-              Media playback UI with explicit loading, buffering, and error states; CI on each
-              meaningful change.
+              Auth-gated routing (sessions fail closed; tokens off the URL). Consumed authenticated
+              REST/JSON with async/await for session and resource data.
+            </li>
+            <li>
+              Multi-step forms with client validation, inline errors, and async submit states. Context
+              API for session and preferences; local state for forms and the player.
+            </li>
+            <li>
+              Media playback UI with loading, buffering, and error handling. Git branches, pull
+              requests, and CI on each meaningful change.
             </li>
           </ul>
         </section>
@@ -131,7 +139,7 @@ export default function ResumePage() {
           </ul>
         </section>
 
-        <h2 className="mt-5 border-b border-black pb-0.5 text-base font-semibold">Skills</h2>
+        <h2 className="mt-4 border-b border-black pb-0.5 text-base font-semibold">Skills</h2>
         <ul className="mt-2 list-disc space-y-0.5 pl-5">
           <li>
             <span className="font-semibold">Frontend:</span> React, Next.js, TypeScript, JavaScript
@@ -147,7 +155,7 @@ export default function ResumePage() {
           </li>
         </ul>
 
-        <h2 className="mt-5 border-b border-black pb-0.5 text-base font-semibold">Education</h2>
+        <h2 className="mt-4 border-b border-black pb-0.5 text-base font-semibold">Education</h2>
         <p className="mt-2">
           Associate of Science, Interactive Media Design | The Art Institute of New York City | 2011
         </p>

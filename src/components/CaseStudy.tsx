@@ -21,7 +21,10 @@ export default function CaseStudy({ project }: { project: Project }) {
         <h1 className="mt-3 max-w-3xl text-4xl font-semibold tracking-tight md:text-5xl">
           {project.title}
         </h1>
-        <p className="mt-3 text-lg text-fg-muted">{project.role}</p>
+        <p className="mt-3 text-lg text-fg-muted">
+          {project.role}
+          {project.dates ? ` · ${project.dates}` : ''}
+        </p>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed">{project.summary}</p>
         <ul className="mt-6 flex flex-wrap gap-2">
           {project.stack.map((item) => (
